@@ -17,15 +17,10 @@ d = {
 
 
 def parse_string(text):
+    """ Parse humanized strings like 128M to 16K to something a machine can understand """
+
     if text[-1] in d:
         num, magnitude = text[:-1], text[-1]
         return int(Decimal(num) * 10 ** d[magnitude])
     else:
         return int(Decimal(text))
-
-# text_to_num('3.17B')
-# Decimal('3170000000.00')
-# text_to_num('4M')
-# Decimal('4000000')
-# text_to_num('4.1234567891234B')
-# Decimal('4123456789.1234000000000')
